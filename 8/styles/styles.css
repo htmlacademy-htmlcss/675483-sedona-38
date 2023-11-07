@@ -15,8 +15,18 @@
 
 /* BASIC */
 
-* {
+*,
+::before,
+::after {
   box-sizing: border-box;
+}
+
+.link:focus-visible,
+.button:focus-visible,
+.filter-form__label:focus-within .mark,
+.input:focus-visible,
+.quantity-button:focus-visible svg {
+  outline: 3px solid #83B3D3;
 }
 
 html, body {
@@ -35,6 +45,7 @@ body {
   line-height: 21px;
   color: #333;
   background-color: #f2f2f2;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.20);
 }
 
 .link {
@@ -101,7 +112,7 @@ img {
   background-color: #756157;
 }
 
-.button--color-primary:focus {
+.button--color-primary:focus-visible {
   background-color: #615048;
 }
 
@@ -118,7 +129,7 @@ img {
   background-color: #82B3D3;
 }
 
-.button--color-accent:focus {
+.button--color-accent:focus-visible {
   background-color: #68A2CA;
 }
 
@@ -149,9 +160,8 @@ img {
   background-color: #f2f2f2;
 }
 
-.input:focus {
+.input:focus-visible {
   background-color: #e6e6e6;
-  outline: 3px solid #81B3D3;
 }
 
 .input:hover {
@@ -581,7 +591,7 @@ img {
   color: #68A2CA;
 }
 
-.social-list__link:focus {
+.social-list__link:focus-visible {
   color: #68A2CA;
 }
 
@@ -611,8 +621,8 @@ img {
   color: #756157;
 }
 
-.contacts-address__phone:focus,
-.footer-logo__link:focus {
+.contacts-address__phone:focus-visible,
+.footer-logo__link:focus-visible {
   color: #756157;
 }
 
@@ -770,10 +780,6 @@ img {
   background-color: #3F5E72;
 }
 
-.filter-form__label:focus-within .mark {
-  outline: 3px solid #83B3D3;
-}
-
 .filter-form__group--price {
   flex-basis: 288px;
   margin-left: auto;
@@ -822,7 +828,7 @@ img {
   background-color: transparent;
 }
 
-.range-inputs__label .input:focus {
+.range-inputs__label .input:focus-visible {
   outline: none;
 }
 
@@ -861,7 +867,6 @@ img {
   right: 0;
 }
 
-.range-scale__toggle:focus,
 .range-scale__toggle:active {
   outline: 3px solid #83B3D3;
 }
@@ -882,20 +887,12 @@ img {
   margin-bottom: 32px;
 }
 
-/* .reset {
-  border: 3px solid transparent;
-} */
-
 .button--color-transparent {
   background-color: transparent;
 }
 
 .button--color-transparent:hover {
   color: rgba(255, 255, 255, .3);
-}
-
-.button--color-transparent:focus {
-  border: 3px solid #83B3D3;
 }
 
 .button--color-transparent:active {
@@ -925,8 +922,9 @@ img {
   border-color: #68A2CA;
 }
 
-.catalog-header__sorting:focus {
-  border-color: #68A2CA;
+.catalog-header__sorting:focus-visible {
+  outline: #68a2ca;
+  border: 2px solid #68a2ca;
 }
 
 .catalog-header__sorting:disabled {
@@ -965,7 +963,8 @@ img {
   border-color: #000;
 }
 
-.view-list__button:focus {
+.view-list__button:focus-visible {
+  outline: 2px #68a2ca;
   border-color: #68A2CA;
 }
 
@@ -1046,7 +1045,7 @@ img {
   background-color: #6C9E42;
 }
 
-.card-buttons__favorite.is-current:focus {
+.card-buttons__favorite.is-current:focus-visible {
   background-color: #6C9E42;
 }
 
@@ -1124,12 +1123,17 @@ img {
   /* display: none; */
 }
 
+.modal-container--show {
+  display: block;
+}
+
 .modal {
   position: relative;
   margin: auto;
   padding: 64px 70px;
   border-radius: 30px;
   background-color: #ffffff;
+  box-shadow: 0 25px 50px 0 rgba(0, 0, 0, 0.15);
 }
 
 .modal-search {
@@ -1145,9 +1149,8 @@ img {
   background-color: #f2f2f2;
 }
 
-.modal-close:focus {
+.modal-close:focus-visible {
   background-color: #e6e6e6;
-  outline: 3px solid #82B3D3;
 }
 
 .modal-close:hover {
@@ -1164,6 +1167,7 @@ img {
 .modal-content__title {
   margin: 0;
   margin-bottom: 64px;
+  padding-right: 40px;
 }
 
 .modal-content__form {
@@ -1212,6 +1216,7 @@ img {
   background-image: url(../images/date.svg);
   background-repeat: no-repeat;
   background-position: center right 20px;
+  padding-right: 60px;
 }
 
 .field-group__input .input--number {
@@ -1233,8 +1238,6 @@ img {
 
 .field-group__input--quantity {
   flex-direction: row;
-  border-radius: 4px;
-  overflow: hidden;
 }
 
 .quantity-button {
@@ -1242,7 +1245,18 @@ img {
   padding: 0;
   width: 40px;
   border-radius: 0;
+  background-color: #f2f2f2;
   color: #756157;
+}
+
+.quantity-button--less {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.quantity-button--more {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .quantity-button svg {
@@ -1253,8 +1267,7 @@ img {
   outline: none;
 }
 
-.quantity-button:focus svg {
-  outline: 3px solid #82B3D3;
+.quantity-button:focus-visible svg {
   border-radius: 4px;
   color: #000;
   opacity: 1;
@@ -1288,6 +1301,7 @@ img {
   padding-bottom: 18px;
   margin-top: 25px;
   line-height: 24px;
+  border-radius: 10px;
 }
 
 /* TOOLTIP */
